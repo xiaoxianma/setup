@@ -16,7 +16,7 @@
         delrem = push origin --delete
         psrem = push -u origin
         undo = reset HEAD~1 --mixed
-        res = !git reset --hard
+        rmsubmodule = rm --cached . -rf
         # log
         lg = log --all --graph --decorate --oneline --simplify-by-decoration
         l = log --all --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
