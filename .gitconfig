@@ -4,29 +4,56 @@
         clean = git-lfs clean -- %f
         smudge = git-lfs smudge -- %f
 [user]
-        name = XXX
-        email = XXX
+        name = Weidong Sun
+        email = weidong.sun@imc.com
 [alias]
         # basic
         s = status -uno
+        # working with branches
+        b = branch
         co = checkout
-        cob = checkout -b
+        cb = checkout -b
+        # updating code
+        pr = pull --rebase
+        # committing
+        c = commit
+        cm = commit -m
+        cam = commit -am
+        caa = commit -a --amend
+        # dealing with rebases
+        rba = rebase --abort
+        rbc = rebase --continue
+        # branch related
         track = checkout --track
         del = branch -D
         delrem = push origin --delete
         psrem = push -u origin
+        ps = push -u origin HEAD
         undo = reset HEAD~1 --mixed
         rmsubmodule = rm --cached . -rf
         # log
-        lg = log --all --graph --decorate --oneline --simplify-by-decoration
-        l = log --all --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+        l = log --oneline --graph --color
+        lg = log --graph --date=relative --pretty=format:'%C(cyan)%h: %C(yellow) - %an - %Cgreen %C(cyan)%ar:%Creset%n%s%n'
+        #ll = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+        ll = log --all --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
         # branch format
         br = branch --format='%(HEAD) %(if)%(HEAD)%(then)%(color:green)%(end)%(align:left,30)%(refname:short)%(end)%(color:reset) [%(color:blue)%(upstream:short)%(color:reset)] - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
 [pull]
         rebase = true
+[push]
+        default = simple
 [credential]
         helper = osxkeychain
 [pager]
         branch = false
-[push]
-        default = current
+[http]
+        emptyAuth = true # authentication workaround for gitlab kerberos auth
+        sslVerify = true
+[branch]
+        autosetuprebase = always
+        autosetupmerge  = always
+[rebase]
+        autostash = true
+[core]
+        excludesfile = /Users/wsun1/.gitignore
+        pager = less -F -X
