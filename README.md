@@ -12,3 +12,6 @@ essential steps
 - install Oh-My-Zsh
 - install Starship(theme)
 - install Oh-My-Zsh and plugins(git, autojump, brew, hightlighting, autosuggestions
+
+## Reference
+https://github.com/topics/zsh
